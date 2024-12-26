@@ -1,0 +1,36 @@
+version: '3.9'
+
+services:
+  app-container:
+    build:
+      context: .
+      dockerfile: Dockerfile  # Dockerfile для Flask-сервера
+    container_name: app-container
+    ports:
+      - "7432:7432"  # Публикуем порт сервера Flask
+    volumes:
+      - ./Биржа:/app/Биржа  # Подключаем папку с базой данных
+    environment:
+      - FLASK_ENV=development
+
+  bot1-container:
+    build:
+      context: .
+      dockerfile: Dockerfile.bot1  # Dockerfile для bot1.py
+    container_name: bot1-container
+    depends_on:
+      - app-container  # Указываем, что бот запускается после контейнера Flask
+    environment:
+      - PYTHONUNBUFFERED=1
+    command: python bot1.py  # Указываем, какой скрипт запускать
+
+  bot2-container:
+    build:
+      context: .
+      dockerfile: Dockerfile.bot2  # Можно использовать тот же Dockerfile, если конфигурация совпадает
+    container_name: bot2-container
+    depends_on:
+      - app-container  # Указываем, что бот запускается после контейнера Flask
+    environment:
+      - PYTHONUNBUFFERED=1
+    command: python bot2.py  # Указываем, какой скрипт запускать

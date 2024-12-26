@@ -1,0 +1,19 @@
+# Используем Python 3.9
+FROM python:3.9-slim
+
+# Устанавливаем рабочую директорию
+WORKDIR /app
+
+# Копируем файлы проекта
+COPY bot2.py ./
+COPY Биржа ./Биржа
+COPY requirements.txt ./
+
+# Устанавливаем зависимости
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Устанавливаем таймзону (опционально)
+ENV TZ=Europe/Moscow
+
+# Запускаем скрипт
+CMD ["python", "bot2.py"]

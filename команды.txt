@@ -1,0 +1,7 @@
+curl -X GET http://127.0.0.1:7432/orders
+curl -X POST http://127.0.0.1:7432/apply_order -H "Content-Type: application/json" -d "{\"user_id\":\"2\",\"order_id\":\"3\",\"key\":\"zON0TAjAgK\"}"
+curl -X POST http://127.0.0.1:7432/orders -H "Content-Type: application/json" -d "{\"user_id\":\"3\",\"pair_id\":\"5\",\"quantity\":\"100\",\"price\":\"2\",\"type\":\"buy\",\"key\":\"9F6O14K8ty\"}"
+curl -X DELETE http://127.0.0.1:7432/orders/2 -H "Content-Type: application/json" -d "{\"key\":\"9F6O14K8ty\"}"
+curl -X POST http://127.0.0.1:7432/user -H "Content-Type: application/json" -d "{\"username\": \"test_user\"}"
+curl -X GET http://127.0.0.1:7432/balance/1 -H "Content-Type: application/json" -d "{\"key\": \"key\"}"
+curl -X GET http://127.0.0.1:7432/api/lots

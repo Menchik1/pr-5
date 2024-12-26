@@ -1,0 +1,23 @@
+{
+    "user": {
+      "headers": ["user_id", "username", "key"],
+      "data": [
+      ]
+    },
+    "user_lot": {
+      "headers": ["user_id", "lot_id", "quantity"],
+      "data": [
+      ]
+    },
+    "order": {
+      "headers": ["order_id", "user_id", "pair_id", "quantity", "price", "type", "closed"],
+      "data": [
+      ]
+    },
+    "pair": {
+      "headers": ["pair_id", "first_lot_id", "second_lot_id"],
+      "data": [
+      ]
+    }
+  }
+  
